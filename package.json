@@ -1,0 +1,29 @@
+{
+  "name": "oasin",
+  "version": "1.0.0",
+  "description": "Mixin that combines generated clients for OAS into a single class",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "openapi",
+    "openapi-generator",
+    "typescript",
+    "api",
+    "rest"
+  ],
+  "author": "Cristian Petre <driimus@vivaldi.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/driimus/oasin/issues"
+  },
+  "homepage": "https://github.com/driimus/oasin#readme",
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.3"
+  },
+  "packageManager": "pnpm@7.12.1"
+}
