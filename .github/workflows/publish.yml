@@ -2,7 +2,7 @@ name: Changesets
 on:
   push:
     branches:
-      - feat/v3
+      - main
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
