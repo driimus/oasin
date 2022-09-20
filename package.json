@@ -1,6 +1,6 @@
 {
   "name": "oasin",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Mixin that combines generated clients for OAS into a single class",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -25,6 +25,10 @@
     "email": "driimus@vivaldi.net"
   },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/driimus/oasin.git"
+  },
   "bugs": {
     "url": "https://github.com/driimus/oasin/issues"
   },
