@@ -55,4 +55,5 @@ function applyMixins<T extends Constructor[]>(
 const derivesFromBase =
   <T extends Constructor>(baseClass: T) =>
   <U>(obj: U): obj is Extract<U, T> =>
-    baseClass.prototype.isPrototypeOf(obj);
+    Object.prototype.isPrototypeOf(obj as any) &&
+    baseClass.prototype.isPrototypeOf((obj as any).prototype);
