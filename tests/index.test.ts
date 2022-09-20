@@ -1,6 +1,8 @@
-import { autoMix, mixApis } from '../src';
 import 'jest-extended';
+
 import { FancySet } from 'fancy-set';
+
+import { autoMix, mixApis } from '../src';
 
 class Base {}
 class A extends Base {
@@ -36,9 +38,7 @@ describe('autoMix', () => {
 
     const Mixed = autoMix(DummyModule, DummyModule.Base);
 
-    const mixedPropertyNames = new FancySet(
-      Object.getOwnPropertyNames(Mixed.prototype)
-    );
+    const mixedPropertyNames = new FancySet(Object.getOwnPropertyNames(Mixed.prototype));
     const unexpectedPropertyNames = new FancySet(
       Object.getOwnPropertyNames(DummyModule.ApiUnrelated.prototype)
     );
@@ -51,11 +51,9 @@ describe('autoMix', () => {
       ].flat()
     );
 
-    expect([
-      ...mixedPropertyNames.intersection(unexpectedPropertyNames),
-    ]).toStrictEqual(['constructor']);
-    expect([...mixedPropertyNames]).toIncludeSameMembers([
-      ...expectedPropertyNames,
+    expect([...mixedPropertyNames.intersection(unexpectedPropertyNames)]).toStrictEqual([
+      'constructor',
     ]);
+    expect([...mixedPropertyNames]).toIncludeSameMembers([...expectedPropertyNames]);
   });
 });
