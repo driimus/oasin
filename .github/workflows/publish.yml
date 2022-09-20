@@ -44,35 +44,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  website:
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout code repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: install pnpm
-        uses: pnpm/action-setup@v2.2.2
-        with:
-          version: 7.12.1
-
-      - name: setup node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'pnpm'
-
-      - name: install dependencies
-        run: pnpm install
-
-      - name: deploy website
-        run: |
-          git config user.email "actions@github.com"
-          git config user.name "gh-actions"
-          pnpm run -r deploy
-        env:
-          GIT_USER: ${{ github.actor }}
-          GIT_PASS: ${{ secrets.GITHUB_TOKEN }}
