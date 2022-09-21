@@ -34,20 +34,21 @@ describe('mixApis', () => {
 
 describe('autoMix', () => {
   it('should combine every class derived from the expected base', async () => {
-    const DummyModule = await import('./fixtures');
+    const PetStoreAPIs = await import('./fixtures/petStoreClient');
+    const { BaseAPI, PetApi, StoreApi, UserApi, BlobApiResponse } = PetStoreAPIs;
 
-    const Mixed = autoMix(DummyModule, DummyModule.Base);
+    const Mixed = autoMix(PetStoreAPIs, BaseAPI);
 
     const mixedPropertyNames = new FancySet(Object.getOwnPropertyNames(Mixed.prototype));
     const unexpectedPropertyNames = new FancySet(
-      Object.getOwnPropertyNames(DummyModule.ApiUnrelated.prototype)
+      Object.getOwnPropertyNames(BlobApiResponse.prototype)
     );
 
     const expectedPropertyNames = new FancySet(
       [
-        Object.getOwnPropertyNames(DummyModule.ApiOne.prototype),
-        Object.getOwnPropertyNames(DummyModule.ApiTwo.prototype),
-        Object.getOwnPropertyNames(DummyModule.ApiThree.prototype),
+        Object.getOwnPropertyNames(PetApi.prototype),
+        Object.getOwnPropertyNames(StoreApi.prototype),
+        Object.getOwnPropertyNames(UserApi.prototype),
       ].flat()
     );
 

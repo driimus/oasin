@@ -1,1 +1,1 @@
-export * from './dummyModule';
+export * from './petStoreClient';

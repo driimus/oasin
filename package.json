@@ -12,6 +12,7 @@
     "build": "tsc",
     "prepublishOnly": "tsc",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "generate-fixtures": "openapi-generator-cli generate",
     "lint": "eslint --ext .ts .",
     "format": "eslint --fix --ext .ts .",
     "ci:version": "changeset version",
@@ -39,6 +40,7 @@
   "homepage": "https://github.com/driimus/oasin#readme",
   "devDependencies": {
     "@changesets/cli": "^2.24.4",
+    "@openapitools/openapi-generator-cli": "^2.5.2",
     "@swc/core": "^1.3.2",
     "@swc/jest": "^0.2.22",
     "@types/jest": "^29.0.3",
