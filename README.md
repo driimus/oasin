@@ -33,7 +33,7 @@ export class PetStoreClient extends mixModuleApis(PetStoreAPI, PetStoreAPI.BaseA
 For fine-grained control over what is being mixed, you can use `combineMixins` to provide a subset of your client library's APIs:
 
 ```ts
-import { mixModuleApis } from 'oasin';
+import { combineMixins } from 'oasin';
 
 import { PetApi, StoreApi, BaseAPI } from '<your-client-lib>';
 
