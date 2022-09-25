@@ -1,6 +1,6 @@
 {
   "name": "oasin",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Mixin that combines generated clients for OAS into a single class",
   "exports": "./dist/index.js",
   "types": "./dist/index.d.ts",
