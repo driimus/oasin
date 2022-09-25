@@ -1,8 +1,14 @@
 # oasin
 
-Easily combine APIs from openapi-generated client libraries with TypeScript support.
+[![tests](https://github.com/driimus/oasin/actions/workflows/test.yml/badge.svg)](https://github.com/driimus/oasin/actions/workflows/test.yml)
+[![npm](https://img.shields.io/npm/v/oasin.svg?style=flat)](https://www.npmjs.com/package/oasin)
+
+Easily combine APIs from [openapi-generator](https://github.com/OpenAPITools/openapi-generator) client libraries targeting TypeScript.
 
 # Installation
+
+> **Warning**
+> This is an ES only package. Before installing, make sure that your project's configuration supports ECMAScript modules.
 
 ```sh
 pnpm add oasin
@@ -10,28 +16,43 @@ pnpm add oasin
 
 # Usage
 
-Use `autoMix` when you need to access to every API client available in the library:
+Use `mixModuleApis` when you need to access to every API client available in the library. Depending on your choice of generator, your imports will have a different structure:
+
+## `typescript-fetch`
 
 ```ts
-import { autoMix } from 'oasin';
+import { mixModuleApis } from 'oasin';
 
-import { BaseAPI } from '<your-client-lib>/base';
 import * as PetStoreAPI from '<your-client-lib>';
 
-export class PetStoreClient extends autoMix(PetStoreAPI, BaseAPI) {
+export class PetStoreClient extends mixModuleApis(PetStoreAPI, PetStoreAPI.BaseAPI) {
   /** ... */
 }
 ```
 
-For fine-grained control over what is being mixed, you can use `mixApis` to provide a subset of your client library's APIs:
+For fine-grained control over what is being mixed, you can use `combineMixins` to provide a subset of your client library's APIs:
 
 ```ts
-import { autoMix } from 'oasin';
+import { mixModuleApis } from 'oasin';
+
+import { PetApi, StoreApi, BaseAPI } from '<your-client-lib>';
+
+export class PetStoreClient extends combineMixins([PetApi, StoreApi], BaseAPI) {}
+```
+
+## `typescript-axios`
+
+When clients are generated using `typescript-axios`, top-level exports don't include the `BaseAPI` class. It has to be imported separately:
+
+```ts
+import { mixModuleApis } from 'oasin';
 
 import { BaseAPI } from '<your-client-lib>/base';
-import { PetApi, StoreApi } from '<your-client-lib>';
+import * as PetStoreAPI from '<your-client-lib>';
 
-export class PetStoreClient extends mixApis([PetApi, StoreApi], BaseAPI) {}
+export class PetStoreClient extends mixModuleApis(PetStoreAPI, BaseAPI) {
+  /** ... */
+}
 ```
 
 ## Limitations

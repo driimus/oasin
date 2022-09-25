@@ -13,24 +13,21 @@ type UnionToIntersection<T> = (T extends unknown ? (k: T) => void : never) exten
 /**
  * Combines all the API classes from a module which derive from the provided base class.
  */
-export function autoMix<T, Base extends Constructor>(
+export function mixModuleApis<T, Base extends Constructor>(
   apiModule: { [ModuleEntry: string]: T },
   baseApi: Base
 ) {
-  return mixApis(
+  return combineMixins(
     Object.values(apiModule).filter<Extract<T, Base>>(derivesFromBase(baseApi)),
     baseApi
   );
 }
 
-/**
- * Combines a list of API classes with the provided base class.
- */
-export function mixApis<T extends Constructor[], Base extends Constructor>(
+export function combineMixins<T extends Constructor[], Base extends Constructor>(
   mixins: T,
-  baseApi: Base
+  baseCtor: Base
 ): Constructor<UnionToIntersection<InstanceType<TupleToUnion<T>>>, ConstructorParameters<Base>> {
-  const mixed = class extends baseApi {};
+  const mixed = class extends baseCtor {};
 
   applyMixins(mixed, mixins);
 

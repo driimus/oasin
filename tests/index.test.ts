@@ -2,7 +2,7 @@ import 'jest-extended';
 
 import { FancySet } from 'fancy-set';
 
-import { autoMix, mixApis } from '../src';
+import { combineMixins, mixModuleApis } from '../src';
 
 class Base {}
 class A extends Base {
@@ -16,28 +16,28 @@ class B extends Base {
   }
 }
 
-describe('mixApis', () => {
+describe('combineMixins', () => {
   it('should return a combined prototype', () => {
-    const Mixed = mixApis([A, B], Base);
+    const Mixed = combineMixins([A, B], Base);
 
     expect(new Mixed().methodA()).toStrictEqual(new A().methodA());
     expect(new Mixed().methodB()).toStrictEqual(new B().methodB());
   });
 
   it('should not mutate inputs', () => {
-    mixApis([A, B], Base);
+    combineMixins([A, B], Base);
 
     expect(A.prototype).not.toHaveProperty('methodB');
     expect(B.prototype).not.toHaveProperty('methodA');
   });
 });
 
-describe('autoMix', () => {
+describe('mixModuleApis', () => {
   it('should combine every class derived from the expected base', async () => {
     const PetStoreAPIs = await import('./fixtures/petStoreClient');
     const { BaseAPI, PetApi, StoreApi, UserApi, BlobApiResponse } = PetStoreAPIs;
 
-    const Mixed = autoMix(PetStoreAPIs, BaseAPI);
+    const Mixed = mixModuleApis(PetStoreAPIs, BaseAPI);
 
     const mixedPropertyNames = new FancySet(Object.getOwnPropertyNames(Mixed.prototype));
     const unexpectedPropertyNames = new FancySet(
