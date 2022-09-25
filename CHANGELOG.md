@@ -1,5 +1,11 @@
 # oasin
 
+## 1.0.1
+
+### Patch Changes
+
+- 8dca34c: docs(usage): correct `combineMixins` import
+
 ## 1.0.0
 
 ### Major Changes
