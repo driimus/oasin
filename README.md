@@ -57,6 +57,6 @@ export class PetStoreClient extends mixModuleApis(PetStoreAPI, BaseAPI) {
 
 ## Limitations
 
-- subsequent APIs will overwrite method signatures of previoussources. You can prevent this by ensuring that there are no duplicate operation IDs in the OAS
+- subsequent APIs will overwrite method signatures of previous sources. You can prevent this by ensuring that there are no duplicate operation IDs in the OAS
 - the returned class will only support one configuration. API clients should only be grouped together as long as they rely on the same configuration (base URL, signing requests etc.).
 - static imports have to be used. Autoloading a library as a single client won't be supported in the near future, as TypeScript lacks support for infering dynamic import types when the import path is a parameter, even if typed as a string literal.
