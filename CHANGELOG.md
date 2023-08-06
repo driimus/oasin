@@ -1,5 +1,11 @@
 # oasin
 
+## 1.0.2
+
+### Patch Changes
+
+- 8869171: docs: elaborate on limitations
+
 ## 1.0.1
 
 ### Patch Changes
