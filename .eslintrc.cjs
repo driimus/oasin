@@ -1,12 +1,12 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'jest', 'simple-import-sort', 'import', 'unicorn'],
+  plugins: ['@typescript-eslint', 'vitest', 'simple-import-sort', 'import', 'unicorn'],
   env: {
     node: true,
     es6: true,
   },
-  extends: ['eslint:recommended', 'plugin:jest/recommended', 'plugin:unicorn/recommended'],
+  extends: ['eslint:recommended', 'plugin:vitest/recommended', 'plugin:unicorn/recommended'],
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
@@ -22,7 +22,7 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
         'plugin:prettier/recommended',
-        'plugin:jest/recommended',
+        'plugin:vitest/recommended',
       ],
       rules: {
         'prefer-const': ['error', { destructuring: 'all' }],
@@ -59,10 +59,5 @@ module.exports = {
         'unicorn/no-useless-switch-case': 'off',
       },
     },
-  ],
-  settings: {
-    jest: {
-      version: 29,
-    },
-  },
+  ]
 };
