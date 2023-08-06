@@ -1,4 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":preserveSemverRanges"]
+  "extends": ["config:base", ":preserveSemverRanges"],
+  "packageRules": [
+    {
+      "matchPackageNames": ["eslint", "prettier", "lint-staged"],
+      "matchPackagePatterns": ["^eslint-plugin", "^eslint-config", "^@typescript-eslint/"],
+      "groupName": "linter"
+    }
+  ]
 }
