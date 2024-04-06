@@ -1,5 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-export * from './PetApi';
-export * from './StoreApi';
-export * from './UserApi';
+export * from './PetApi.js';
+export * from './StoreApi.js';
+export * from './UserApi.js';

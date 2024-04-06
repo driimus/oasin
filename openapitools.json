@@ -2,12 +2,15 @@
   "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
   "spaces": 2,
   "generator-cli": {
-    "version": "6.1.0",
+    "version": "7.4.0",
     "generators": {
       "v3.0": {
         "generatorName": "typescript-fetch",
         "output": "#{cwd}/tests/fixtures/petStoreClient",
-        "inputSpec": "https://raw.githubusercontent.com/OpenAPITools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml"
+        "inputSpec": "https://raw.githubusercontent.com/OpenAPITools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml",
+        "additionalProperties": {
+          "importFileExtension": ".js"
+        }
       }
     }
   }
