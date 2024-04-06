@@ -2,7 +2,7 @@ import 'jest-extended';
 
 import { FancySet } from 'fancy-set';
 
-import { combineMixins, mixModuleApis } from '../src';
+import { combineMixins, mixModuleApis } from '../src/index.js';
 
 class Base {}
 class A extends Base {
@@ -34,14 +34,14 @@ describe('combineMixins', () => {
 
 describe('mixModuleApis', () => {
   it('should combine every class derived from the expected base', async () => {
-    const PetStoreAPIs = await import('./fixtures/petStoreClient');
+    const PetStoreAPIs = await import('./fixtures/petStoreClient/index.js');
     const { BaseAPI, PetApi, StoreApi, UserApi, BlobApiResponse } = PetStoreAPIs;
 
     const Mixed = mixModuleApis(PetStoreAPIs, BaseAPI);
 
     const mixedPropertyNames = new FancySet(Object.getOwnPropertyNames(Mixed.prototype));
     const unexpectedPropertyNames = new FancySet(
-      Object.getOwnPropertyNames(BlobApiResponse.prototype)
+      Object.getOwnPropertyNames(BlobApiResponse.prototype),
     );
 
     const expectedPropertyNames = new FancySet(
@@ -49,7 +49,7 @@ describe('mixModuleApis', () => {
         Object.getOwnPropertyNames(PetApi.prototype),
         Object.getOwnPropertyNames(StoreApi.prototype),
         Object.getOwnPropertyNames(UserApi.prototype),
-      ].flat()
+      ].flat(),
     );
 
     expect([...mixedPropertyNames.intersection(unexpectedPropertyNames)]).toStrictEqual([

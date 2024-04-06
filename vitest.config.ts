@@ -8,10 +8,12 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       exclude: ['tests/fixtures'],
-      branches: 75,
-      functions: 75,
-      lines: 75,
-      statements: 75,
+      thresholds: {
+        branches: 75,
+        functions: 75,
+        lines: 75,
+        statements: 75,
+      },
     },
   },
 });
