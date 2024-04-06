@@ -1,11 +1,11 @@
-type Constructor<T = {}, Arguments extends unknown[] = any[]> = new (...args: Arguments) => T;
+type Constructor<T = {}, Arguments extends unknown[] = any[]> = new (...arguments_: Arguments) => T;
 
 type ArrayEntry<T> = T extends Array<infer U> ? U : never;
 
 type TupleToUnion<T extends unknown[]> = T[number];
 
 type UnionToIntersection<T> = (T extends unknown ? (k: T) => void : never) extends (
-  k: infer I
+  k: infer I,
 ) => void
   ? I
   : never;
@@ -15,17 +15,17 @@ type UnionToIntersection<T> = (T extends unknown ? (k: T) => void : never) exten
  */
 export function mixModuleApis<T, Base extends Constructor>(
   apiModule: { [ModuleEntry: string]: T },
-  baseApi: Base
+  baseApi: Base,
 ) {
   return combineMixins(
     Object.values(apiModule).filter<Extract<T, Base>>(derivesFromBase(baseApi)),
-    baseApi
+    baseApi,
   );
 }
 
 export function combineMixins<T extends Constructor[], Base extends Constructor>(
   mixins: T,
-  baseCtor: Base
+  baseCtor: Base,
 ): Constructor<UnionToIntersection<InstanceType<TupleToUnion<T>>>, ConstructorParameters<Base>> {
   const mixed = class extends baseCtor {};
 
@@ -35,20 +35,24 @@ export function combineMixins<T extends Constructor[], Base extends Constructor>
 }
 
 function applyMixins<T extends Constructor[]>(
-  derivedCtor: any,
-  constructors: T
+  derivedCtor: Constructor<any>,
+  constructors: T,
 ): asserts derivedCtor is Constructor<UnionToIntersection<InstanceType<ArrayEntry<T>>>> {
   for (const baseCtor of constructors)
     for (const name of Object.getOwnPropertyNames(baseCtor.prototype))
       Object.defineProperty(
         derivedCtor.prototype,
         name,
-        Object.getOwnPropertyDescriptor(baseCtor.prototype, name) || Object.create(null)
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        Object.getOwnPropertyDescriptor(baseCtor.prototype, name) || Object.create(null),
       );
 }
 
 const derivesFromBase =
   <T extends Constructor>(baseClass: T) =>
-  <U>(obj: U): obj is Extract<U, T> =>
-    Object.prototype.isPrototypeOf.call(Object.prototype, obj as any) &&
-    Object.prototype.isPrototypeOf.call(baseClass.prototype, (obj as any).prototype);
+  <U>(object: U): object is Extract<U, T> =>
+    Object.prototype.isPrototypeOf.call(Object.prototype, object as Object) &&
+    Object.prototype.isPrototypeOf.call(
+      baseClass.prototype,
+      (object as { prototype?: unknown }).prototype as Object,
+    );
