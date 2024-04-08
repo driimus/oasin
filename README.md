@@ -5,16 +5,16 @@
 
 Easily combine APIs from [openapi-generator](https://github.com/OpenAPITools/openapi-generator) client libraries targeting TypeScript.
 
-# Installation
+## Installation
 
-> **Warning**
+> [!Warning]
 > This is an ES only package. Before installing, make sure that your project's configuration supports ECMAScript modules.
 
 ```sh
 pnpm add oasin
 ```
 
-# Usage
+## Usage
 
 Use `mixModuleApis` when you need to access to every API client available in the library. Depending on your choice of generator, your imports will have a different structure:
 
