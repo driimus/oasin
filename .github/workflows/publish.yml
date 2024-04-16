@@ -6,6 +6,6 @@ on:
 
 jobs:
   publish:
-    uses: driimus/shared-workflows/.github/workflows/publish.yml@feat/publish
+    uses: driimus/shared-workflows/.github/workflows/publish.yml@main
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -7,9 +7,9 @@ jobs:
     strategy:
       matrix:
         node-version: [18, 20]
-    uses: driimus/shared-workflows/.github/workflows/test.yml@feat/modular-workflows
+    uses: driimus/shared-workflows/.github/workflows/test.yml@main
     with:
       node-version: ${{ matrix.node-version }}
 
   lint:
-    uses: driimus/shared-workflows/.github/workflows/lint.yml@feat/modular-workflows
+    uses: driimus/shared-workflows/.github/workflows/lint.yml@main
