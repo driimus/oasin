@@ -6,6 +6,10 @@ on:
 
 jobs:
   publish:
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
     uses: driimus/shared-workflows/.github/workflows/publish.yml@main
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
