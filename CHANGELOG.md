@@ -1,5 +1,11 @@
 # oasin
 
+## 1.0.3
+
+### Patch Changes
+
+- d5eaed5: chore: package provenance statements
+
 ## 1.0.2
 
 ### Patch Changes
