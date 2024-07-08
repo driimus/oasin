@@ -1,5 +1,11 @@
 # oasin
 
+## 1.0.4
+
+### Patch Changes
+
+- 3a09ab5: refactor: remove type assertions
+
 ## 1.0.3
 
 ### Patch Changes
