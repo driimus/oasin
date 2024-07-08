@@ -43,16 +43,16 @@ function applyMixins<T extends Constructor[]>(
       Object.defineProperty(
         derivedCtor.prototype,
         name,
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        Object.getOwnPropertyDescriptor(baseCtor.prototype, name) || Object.create(null),
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- `name` is guaranteed to be a property
+        Object.getOwnPropertyDescriptor(baseCtor.prototype, name)!,
       );
 }
 
 const derivesFromBase =
   <T extends Constructor>(baseClass: T) =>
   <U>(object: U): object is Extract<U, T> =>
-    Object.prototype.isPrototypeOf.call(Object.prototype, object as Object) &&
-    Object.prototype.isPrototypeOf.call(
-      baseClass.prototype,
-      (object as { prototype?: unknown }).prototype as Object,
-    );
+    isObjectCtor(object) &&
+    Object.prototype.isPrototypeOf.call(baseClass.prototype, object.prototype);
+
+const isObjectCtor = (object: unknown): object is ObjectConstructor =>
+  typeof object === 'function' && Object.prototype.isPrototypeOf.call(Object.prototype, object);
