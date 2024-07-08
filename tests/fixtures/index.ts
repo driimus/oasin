@@ -1,1 +1,1 @@
-export * from './petStoreClient';
+export * from './petStoreClient/index.js';
