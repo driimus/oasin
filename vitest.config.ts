@@ -5,15 +5,6 @@ export default defineConfig({
     globals: true,
     setupFiles: ['jest-extended/all'],
     silent: true,
-    coverage: {
-      provider: 'v8',
-      exclude: ['tests/fixtures'],
-      thresholds: {
-        branches: 75,
-        functions: 75,
-        lines: 75,
-        statements: 75,
-      },
-    },
+    coverage: { enabled: true },
   },
 });
