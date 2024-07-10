@@ -1,0 +1,19 @@
+output: false
+
+commit-msg:
+  commands:
+    'lint commit message':
+      run: pnpm commitlint --edit {1}
+
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: '*.{ts}'
+      run: pnpm eslint --fix {staged_files}
+      stage_fixed: true
+    format:
+      glob: '*.{md,yml,yaml,json}'
+      exclude: pnpm-lock.yaml
+      run: pnpm prettier --write {staged_files}
+      stage_fixed: true
