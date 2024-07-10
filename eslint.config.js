@@ -7,14 +7,7 @@ import tsEslint from 'typescript-eslint';
 
 export default tsEslint.config(
   {
-    ignores: [
-      'dist',
-      'coverage',
-      'tests/fixtures',
-      '*.d.ts',
-      'eslint.config.js',
-      'vitest.config.ts',
-    ],
+    ignores: ['dist', 'coverage', 'tests/fixtures', '*.d.ts', '*.config.{js,ts}'],
   },
   eslint.configs.recommended,
   ...tsEslint.configs.recommendedTypeChecked,
