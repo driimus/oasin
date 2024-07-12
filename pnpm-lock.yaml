@@ -23,6 +23,9 @@ importers:
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
+      '@tsconfig/strictest':
+        specifier: ^2.0.5
+        version: 2.0.5
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.5.0
         version: 7.5.0(@typescript-eslint/parser@7.5.0(eslint@9.0.0)(typescript@5.1.6))(eslint@9.0.0)(typescript@5.1.6)
@@ -593,6 +596,9 @@ packages:
 
   '@tsconfig/node20@20.1.4':
     resolution: {integrity: sha512-sqgsT69YFeLWf5NtJ4Xq/xAF8p4ZQHlmGW74Nu2tD4+g5fAsposc4ZfaaPixVu4y01BEiDCWLRDCvDM5JOsRxg==}
+
+  '@tsconfig/strictest@2.0.5':
+    resolution: {integrity: sha512-ec4tjL2Rr0pkZ5hww65c+EEPYwxOi4Ryv+0MtjeaSQRJyq322Q27eOQiFbuNgw2hpL4hB1/W/HBGk3VKS43osg==}
 
   '@types/conventional-commits-parser@5.0.0':
     resolution: {integrity: sha512-loB369iXNmAZglwWATL+WRe+CRMmmBPtpolYzIebFaX4YA3x+BEfLqhUAV9WanycKI3TG1IMr5bMJDajDKLlUQ==}
@@ -3463,6 +3469,8 @@ snapshots:
   '@sinclair/typebox@0.27.8': {}
 
   '@tsconfig/node20@20.1.4': {}
+
+  '@tsconfig/strictest@2.0.5': {}
 
   '@types/conventional-commits-parser@5.0.0':
     dependencies:
