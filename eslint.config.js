@@ -4,6 +4,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unicorn from 'eslint-plugin-unicorn';
 import vitest from 'eslint-plugin-vitest';
 import tsEslint from 'typescript-eslint';
+import importX from 'eslint-plugin-import-x';
 
 export default tsEslint.config(
   {
@@ -21,15 +22,15 @@ export default tsEslint.config(
   },
   {
     plugins: {
+      'import-x': importX,
       'simple-import-sort': simpleImportSort,
     },
     rules: {
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
-      // TODO: re-enable after flat config support
-      // 'import/first': 'error',
-      // 'import/newline-after-import': 'error',
-      // 'import/no-duplicates': 'error',
+      'import-x/first': 'error',
+      'import-x/newline-after-import': 'error',
+      'import-x/no-duplicates': 'error',
     },
   },
   unicorn.configs['flat/recommended'],

@@ -1,4 +1,6 @@
-type Constructor<T = {}, Arguments extends unknown[] = any[]> = new (...arguments_: Arguments) => T;
+type Constructor<T = object, Arguments extends unknown[] = any[]> = new (
+  ...arguments_: Arguments
+) => T;
 
 type ArrayEntry<T> = T extends Array<infer U> ? U : never;
 
