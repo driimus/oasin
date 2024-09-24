@@ -1,5 +1,11 @@
 # oasin
 
+## 1.0.5
+
+### Patch Changes
+
+- b645bef: fix(types): emit type declarations with inherited tsconfigs
+
 ## 1.0.4
 
 ### Patch Changes
