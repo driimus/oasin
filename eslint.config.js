@@ -2,7 +2,7 @@ import eslint from '@eslint/js';
 import prettier from 'eslint-plugin-prettier/recommended';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unicorn from 'eslint-plugin-unicorn';
-import vitest from 'eslint-plugin-vitest';
+import vitest from '@vitest/eslint-plugin';
 import tsEslint from 'typescript-eslint';
 import importX from 'eslint-plugin-import-x';
 
