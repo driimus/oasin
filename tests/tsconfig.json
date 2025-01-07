@@ -1,8 +1,9 @@
 {
-    "extends": "../tsconfig.json",
-    "compilerOptions": {
-        "rootDir": "../",
-        "types": ["vitest/globals"]
-    },
-    "include": ["../src", "./"]
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "../",
+    "types": ["vitest/globals"],
+    "lib": ["ESNext"]
+  },
+  "include": ["../src", "./"]
 }

@@ -1,7 +1,5 @@
 import 'jest-extended';
 
-import { FancySet } from 'fancy-set';
-
 import { combineMixins, mixModuleApis } from '../src/index.js';
 
 class Base {}
@@ -39,12 +37,9 @@ describe('mixModuleApis', () => {
 
     const Mixed = mixModuleApis(PetStoreAPIs, BaseAPI);
 
-    const mixedPropertyNames = new FancySet(Object.getOwnPropertyNames(Mixed.prototype));
-    const unexpectedPropertyNames = new FancySet(
-      Object.getOwnPropertyNames(BlobApiResponse.prototype),
-    );
-
-    const expectedPropertyNames = new FancySet(
+    const mixedPropertyNames = new Set(Object.getOwnPropertyNames(Mixed.prototype));
+    const unexpectedPropertyNames = new Set(Object.getOwnPropertyNames(BlobApiResponse.prototype));
+    const expectedPropertyNames = new Set(
       [
         Object.getOwnPropertyNames(PetApi.prototype),
         Object.getOwnPropertyNames(StoreApi.prototype),
