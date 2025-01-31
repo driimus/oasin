@@ -1,5 +1,3 @@
-import 'jest-extended';
-
 import { combineMixins, mixModuleApis } from '../src/index.js';
 
 class Base {}
@@ -50,6 +48,6 @@ describe('mixModuleApis', () => {
     expect([...mixedPropertyNames.intersection(unexpectedPropertyNames)]).toStrictEqual([
       'constructor',
     ]);
-    expect([...mixedPropertyNames]).toIncludeSameMembers([...expectedPropertyNames]);
+    expect([...mixedPropertyNames].sort()).toStrictEqual([...expectedPropertyNames].sort());
   });
 });
