@@ -64,5 +64,5 @@
     "typescript-eslint": "^8.22.0",
     "vitest": "^3.0.4"
   },
-  "packageManager": "pnpm@9.15.4+sha256.9bee59c7313a216722c079c1e22160dea7f88df4e0c3450b1d7b01b882336c6a"
+  "packageManager": "pnpm@10.2.0+sha512.0d27364e0139c6aadeed65ada153135e0ca96c8da42123bd50047f961339dc7a758fc2e944b428f52be570d1bd3372455c1c65fa2e7aa0bfbf931190f9552001"
 }
